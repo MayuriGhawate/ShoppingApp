@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="RegisterServlet" method="post">
+		First Name : <input type="text" name="FirstName" ><br>
+		Last Name : <input type="text" name="LastName" ><br> User
+		User Name : <input type="text" name="UserName" required><br> Password :
+		<input type="password" id="password" name="Password" required><br>
+		Confirm Password : <input type="password" id="Confirmpassword"
+			name="Confirmpassword" required><br>
+		<button type="submit" class="button button-block"
+			onclick="javascript:validatePassword()" />
+		Get Started
+		</button>
+	</form>
+
+	<script type="text/javascript">
+		function validatePassword() {
+			var input = document.getElementById("password");
+			var regexPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
+			if (input.value.match(regexPass)) {
+				validate();
+			} else {
+				alert("Password should contain at least one digit"
+						+ "should contain at least one lower case"
+						+ "should contain at least one upper case"
+						+ "should contain at least 8 from the mentioned characters");
+
+				document.getElementById("password").value = "";
+				document.getElementById("Confirmpassword").value = "";
+			}
+
+		}
+
+		function validate() {
+			var text1 = document.getElementById("password").value;
+			var text2 = document.getElementById("Confirmpassword").value;
+
+			if (text1 == text2) {
+				alret("validation successful");
+			} else {
+				alert("validation failed");
+				document.getElementById("password").value = "";
+				document.getElementById("Confirmpassword").value = "";
+			}
+		}
+	</script>
+</body>
+</html>
